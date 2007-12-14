@@ -17,5 +17,43 @@
     <name>intellidocs-ear</name>
     <url>http://maven.apache.org</url>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.ibt.intellidocs</groupId>
+            <artifactId>intellidocs-ejb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibt.intellidocs</groupId>
+            <artifactId>intellidocs-war</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <displayName>intellidocs</displayName>
+                    <description>
+                        IntelliDocs - Desktop made Simple.
+                    </description>
+                    <version>1.0-SNAPSHOT</version>
+                    <modules>
+                        <webModule>
+                            <groupId>com.ibt.intellidocs</groupId>
+                            <artifactId>intellidocs-war</artifactId>
+                            <contextRoot>/intellidocs</contextRoot>
+                        </webModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
 
