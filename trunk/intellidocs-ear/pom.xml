@@ -23,11 +23,13 @@
             <groupId>com.ibt.intellidocs</groupId>
             <artifactId>intellidocs-ejb</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>com.ibt.intellidocs</groupId>
             <artifactId>intellidocs-war</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <type>war</type>
         </dependency>
 
     </dependencies>
@@ -42,8 +44,10 @@
                     <description>
                         IntelliDocs - Desktop made Simple.
                     </description>
-                    <version>1.0-SNAPSHOT</version>
+                    <version>1.4</version>
+                    <defaultBundleDir>lib</defaultBundleDir>
                     <modules>
+
                         <webModule>
                             <groupId>com.ibt.intellidocs</groupId>
                             <artifactId>intellidocs-war</artifactId>
