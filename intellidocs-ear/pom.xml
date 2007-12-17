@@ -45,7 +45,7 @@
                         IntelliDocs - Desktop made Simple.
                     </description>
                     <version>1.4</version>
-                    <defaultBundleDir>lib</defaultBundleDir>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
                     <modules>
 
                         <webModule>
@@ -54,6 +54,12 @@
                             <contextRoot>/intellidocs</contextRoot>
                         </webModule>
                     </modules>
+                    <jboss>
+                        <version>4.2</version>
+                        <loader-repository>
+                            com.ibt.intellidocs:loader=intellidocs
+                        </loader-repository>
+                    </jboss>
                 </configuration>
             </plugin>
         </plugins>
