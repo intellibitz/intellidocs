@@ -16,6 +16,19 @@
 
     </page>
 
+    <page view-id="/dummy/registerDummyUser.xhtml">
+
+        <action if="#{validation.failed}"
+                execute="#{dummySeamBean.invalid}"/>
+
+        <navigation>
+            <rule if="#{dummySeamBean.registered}">
+                <redirect view-id="/home.xhtml"/>
+            </rule>
+        </navigation>
+
+    </page>
+
     <exception class="org.jboss.seam.security.NotLoggedInException">
         <redirect view-id="/home.xhtml">
             <message severity="warn">You must be logged in to use this feature

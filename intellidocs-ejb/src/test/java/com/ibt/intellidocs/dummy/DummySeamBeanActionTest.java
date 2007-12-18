@@ -1,5 +1,6 @@
 package com.ibt.intellidocs.dummy;
 
+import org.jboss.seam.annotations.In;
 import org.jboss.seam.mock.SeamTest;
 import org.testng.annotations.Test;
 
@@ -17,8 +18,9 @@ public class DummySeamBeanActionTest
 
     // the dummy bean lives in stateless context
     // hence must be created here to access
+    @In(create = true)
+    DummySeamBean dummySeamBean;
 /*
-    @In (create = true)
     DummySeamBean dummySeamBean = (DummySeamBean)
             Component.getInstance(DummySeamBeanAction.class);
 */
@@ -71,6 +73,8 @@ public class DummySeamBeanActionTest
 /*
                 DummySeamBean dummySeamBean = (DummySeamBean)
                         Component.getInstance(DummySeamBeanAction.class);
+*/
+/*
                 assert null != dummySeamBean;
                 dummySeamBean.run ();
 */

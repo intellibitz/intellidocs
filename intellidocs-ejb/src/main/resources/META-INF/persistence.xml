@@ -16,8 +16,11 @@
        <class>hello.Message</class>
        -->
 
-        <jta-data-source>java:/bookingDatasource</jta-data-source>
+        <jta-data-source>java:/intellidocsDS</jta-data-source>
         <properties>
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.PostgreSQLDialect"/>
+
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
             <property name="hibernate.show_sql" value="true"/>
             <!-- These are the default for JBoss EJB3, but not for HEM: -->
@@ -53,8 +56,6 @@
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             -->
 
-            <property name="hibernate.dialect"
-                      value="org.hibernate.dialect.PostgreSQLDialect"/>
 
         </properties>
     </persistence-unit>

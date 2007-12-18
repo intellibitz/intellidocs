@@ -10,7 +10,7 @@
         <connection-url>jdbc:postgresql://localhost:5432/test</connection-url>
 
         <!-- The driver class -->
-        <driver-class>com.postgresql.Driver</driver-class>
+        <driver-class>org.postgresql.Driver</driver-class>
 
         <!-- The login and password -->
         <user-name>test</user-name>
