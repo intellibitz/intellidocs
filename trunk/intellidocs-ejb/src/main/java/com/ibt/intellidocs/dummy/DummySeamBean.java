@@ -9,9 +9,20 @@ import javax.ejb.Local;
 @Local
 public interface DummySeamBean
 {
+    public void register();
+
+    public void invalid();
+
+    public String getVerify();
+
+    public void setVerify(String verify);
+
+    public boolean isRegistered();
+
+    public void destroy();
+
     public void run();
 
     public void cancel();
 
-    public void destroy();
 }
