@@ -15,7 +15,7 @@
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>intellidocs-war</name>
-    <url>http://maven.apache.org</url>
+    <url>http://localhost:8080/intellidocs</url>
 
     <dependencies>
         <dependency>
@@ -67,25 +67,36 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty6-plugin</artifactId>
-                <configuration>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.geronimo.specs</groupId>
-                        <artifactId>geronimo-j2ee_1.4_spec</artifactId>
-                        <version>1.0</version>
-                        <scope>provided</scope>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+    <profiles>
+      <!-- Profile which runs jetty -->
+      <profile>
+        <id>jetty</id>
+        <build>
+          <plugins>
+              <plugin>
+                  <groupId>org.mortbay.jetty</groupId>
+                  <artifactId>maven-jetty6-plugin</artifactId>
+                  <configuration>
+                      <scanIntervalSeconds>10</scanIntervalSeconds>
+                  </configuration>
+                  <dependencies>
+                      <dependency>
+                          <groupId>org.apache.geronimo.specs</groupId>
+                          <artifactId>geronimo-j2ee_1.4_spec</artifactId>
+                          <version>1.0</version>
+                          <scope>provided</scope>
+                      </dependency>
+                  </dependencies>
+              </plugin>
+          </plugins>
+        </build>
+        <activation>
+          <property>
+            <name>jetty</name>
+          </property>
+        </activation>
+      </profile>
+    </profiles>
 
 </project>
 

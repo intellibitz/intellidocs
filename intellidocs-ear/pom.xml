@@ -90,44 +90,58 @@
                     </jboss>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <configuration>
-                    <!-- Container configuration -->
-                    <container>
-                        <containerId>jboss4x</containerId>
-                        <home>/opt/share/jboss-4.2.2.GA</home>
-                    </container>
-                    <!-- Configuration to use with the container -->
-                    <configuration>
-                        <type>existing</type>
-                        <home>/opt/share/jboss-4.2.2.GA/server/default</home>
-                        <properties>
-                            <cargo.jboss.configuration>default
-                            </cargo.jboss.configuration>
-                        </properties>
-                    </configuration>
-                    <!-- Deployer configuration -->
-                    <deployer>
-                        <type>installed</type>
-                        <deployables>
-                            <deployable>
-                                <groupId>com.ibt.intellidocs</groupId>
-                                <artifactId>intellidocs-ear</artifactId>
-                                <type>ear</type>
-                                <pingURL>
-                                    http://localhost:8080/intellidocs/home.xhtml
-                                </pingURL>
-                            </deployable>
-                        </deployables>
-                    </deployer>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
+
+    <profiles>
+      <!-- Profile which runs cargo -->
+      <profile>
+        <id>cargo</id>
+        <build>
+          <plugins>
+              <plugin>
+                  <groupId>org.codehaus.cargo</groupId>
+                  <artifactId>cargo-maven2-plugin</artifactId>
+                  <configuration>
+                      <!-- Container configuration -->
+                      <container>
+                          <containerId>jboss4x</containerId>
+                          <home>/opt/share/jboss-4.2.2.GA</home>
+                      </container>
+                      <!-- Configuration to use with the container -->
+                      <configuration>
+                          <type>existing</type>
+                          <home>/opt/share/jboss-4.2.2.GA/server/default</home>
+                          <properties>
+                              <cargo.jboss.configuration>default
+                              </cargo.jboss.configuration>
+                          </properties>
+                      </configuration>
+                      <!-- Deployer configuration -->
+                      <deployer>
+                          <type>installed</type>
+                          <deployables>
+                              <deployable>
+                                  <groupId>com.ibt.intellidocs</groupId>
+                                  <artifactId>intellidocs-ear</artifactId>
+                                  <type>ear</type>
+                                  <pingURL>
+                                      http://localhost:8080/intellidocs/home.xhtml
+                                  </pingURL>
+                              </deployable>
+                          </deployables>
+                      </deployer>
+                  </configuration>
+              </plugin>
+          </plugins>
+        </build>
+        <activation>
+          <property>
+            <name>cargo</name>
+          </property>
+        </activation>
+      </profile>
+    </profiles>
 
 </project>
 
