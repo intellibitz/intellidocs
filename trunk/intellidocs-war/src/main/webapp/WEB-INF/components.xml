@@ -19,16 +19,11 @@
             auto-create="true"
             entity-manager-factory="#{intellidocs}"/>
 
-    <!--
-            <core:init jndi-pattern="java:comp/env/#{ejbName}/local"
-                       debug="true"
-                    />
-    -->
     <core:init jndi-pattern="intellidocs-ear-1.0-SNAPSHOT/#{ejbName}/local"
                debug="true"
             />
 
-    <!--<transaction:ejb-transaction/>-->
+    <transaction:ejb-transaction/>
 
     <core:manager conversation-timeout="120000"
                   concurrent-request-timeout="500"
