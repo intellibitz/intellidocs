@@ -15,22 +15,18 @@
     <packaging>ear</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>intellidocs-ear</name>
-    <url>http://maven.apache.org</url>
+    <url>http://localhost:8080/intellidocs</url>
 
     <dependencies>
 
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>1.7.0</version>
-            <type>jar</type>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!--
+                <dependency>
+                    <groupId>org.jboss.seam</groupId>
+                    <artifactId>jboss-el</artifactId>
+                    <version>2.0.0.GA</version>
+                    <type>jar</type>
+                </dependency>
+        -->
         <dependency>
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
@@ -46,7 +42,7 @@
         <dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam</artifactId>
-            <version>2.0.0.GA</version>
+            <version>2.0.1.CR1</version>
             <type>ejb</type>
             <exclusions>
                 <exclusion>
@@ -116,25 +112,25 @@
                             <groupId>org.jboss.seam</groupId>
                             <artifactId>jboss-seam</artifactId>
                         </ejbModule>
-                        <jarModule>
-                            <artifactId>commons-beanutils</artifactId>
-                            <groupId>commons-beanutils</groupId>
-                            <bundleDir>lib</bundleDir>
-                        </jarModule>
+                        <!--
+                                                <jarModule>
+                                                    <artifactId>org.jboss.seam</artifactId>
+                                                    <groupId>jboss-el</groupId>
+                                                    <bundleDir>lib</bundleDir>
+                                                </jarModule>
+                        -->
                         <jarModule>
                             <artifactId>commons-digester</artifactId>
                             <groupId>commons-digester</groupId>
                             <bundleDir>lib</bundleDir>
                         </jarModule>
                     </modules>
-                    <!--
-                                        <jboss>
-                                            <version>4.2</version>
-                                            <loader-repository>
-                                                intellidocs-ear-1.0-SNAPSHOT:loader=intellidocs-ear-1.0-SNAPSHOT.ear
-                                            </loader-repository>
-                                        </jboss>
-                    -->
+                    <jboss>
+                        <version>4.2</version>
+                        <loader-repository>
+                            com.ibt.intellidocs:loader=intellidocs-ear-1.0-SNAPSHOT.ear
+                        </loader-repository>
+                    </jboss>
                 </configuration>
             </plugin>
 
