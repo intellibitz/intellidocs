@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam</artifactId>
-            <scope>test</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.seam</groupId>
@@ -68,34 +68,85 @@
     </dependencies>
 
     <profiles>
-      <!-- Profile which runs jetty -->
-      <profile>
-        <id>jetty</id>
-        <build>
-          <plugins>
-              <plugin>
-                  <groupId>org.mortbay.jetty</groupId>
-                  <artifactId>maven-jetty6-plugin</artifactId>
-                  <configuration>
-                      <scanIntervalSeconds>10</scanIntervalSeconds>
-                  </configuration>
-                  <dependencies>
-                      <dependency>
-                          <groupId>org.apache.geronimo.specs</groupId>
-                          <artifactId>geronimo-j2ee_1.4_spec</artifactId>
-                          <version>1.0</version>
-                          <scope>provided</scope>
-                      </dependency>
-                  </dependencies>
-              </plugin>
-          </plugins>
-        </build>
-        <activation>
-          <property>
-            <name>jetty</name>
-          </property>
-        </activation>
-      </profile>
+        <!-- Profile which runs jetty -->
+        <profile>
+            <id>jetty</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>maven-jetty-plugin</artifactId>
+                        <configuration>
+                            <scanIntervalSeconds>10</scanIntervalSeconds>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.jboss.seam</groupId>
+                                <artifactId>jboss-seam</artifactId>
+                                <version>2.0.1.CR1</version>
+                                <scope>provided</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.apache.geronimo.specs</groupId>
+                                <artifactId>geronimo-j2ee_1.4_spec</artifactId>
+                                <version>1.0</version>
+                                <scope>provided</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>javax.faces</groupId>
+                                <artifactId>jsf-api</artifactId>
+                                <version>[1.2,)</version>
+                                <scope>provided</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>javax.ejb</groupId>
+                                <artifactId>ejb-api</artifactId>
+                                <version>3.0</version>
+                                <scope>provided</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>javax.persistence</groupId>
+                                <artifactId>persistence-api</artifactId>
+                                <version>[1.0,)</version>
+                                <scope>provided</scope>
+                            </dependency>
+
+
+                            <dependency>
+                                <groupId>org.jboss.embedded</groupId>
+                                <artifactId>jboss-embedded-all</artifactId>
+                                <version>beta2</version>
+                                <scope>provided</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>javax.transaction</groupId>
+                                <artifactId>jta</artifactId>
+                                <version>[1.1,)</version>
+                                <scope>provided</scope>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.jboss.embedded</groupId>
+                                <artifactId>hibernate-all</artifactId>
+                                <version>beta2</version>
+                                <scope>provided</scope>
+                            </dependency>
+
+                            <dependency>
+                                <groupId>commons-logging</groupId>
+                                <artifactId>commons-logging</artifactId>
+                                <version>[1.1,)</version>
+                                <scope>provided</scope>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+            <activation>
+                <property>
+                    <name>jetty</name>
+                </property>
+            </activation>
+        </profile>
     </profiles>
 
 </project>

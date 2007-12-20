@@ -15,7 +15,7 @@
 
     <properties>
         <seamVersion>2.0.1.CR1</seamVersion>
-        <richfacesVersion>3.1.2.SP1</richfacesVersion>
+        <richfacesVersion>[3.1,)</richfacesVersion>
         <faceletsVersion>[1.1,)</faceletsVersion>
         <digesterVersion>1.8</digesterVersion>
         <jbossEmbeddedVersion>beta2</jbossEmbeddedVersion>
@@ -30,7 +30,7 @@
             <roles>
                 <role>Project Owner</role>
             </roles>
-            <timezone>-5:30</timezone>
+            <timezone>-5.5</timezone>
         </developer>
     </developers>
 
@@ -481,6 +481,11 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-j2ee_1.4_spec</artifactId>
+                <version>1.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -509,7 +514,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate</artifactId>
-            <version>3.2.4.sp1</version>
+            <version>3.2.5.ga</version>
             <scope>provided</scope>
         </dependency>
 
@@ -517,6 +522,13 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>3.0.0.GA</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>3.2.0.ga</version>
             <scope>provided</scope>
         </dependency>
 
@@ -544,7 +556,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>[2.5,)</version>
             <scope>provided</scope>
         </dependency>
 
@@ -618,7 +630,30 @@
             <version>[4.0,)</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>[2.1,)</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>1.13</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>httpunit</groupId>
+            <artifactId>httpunit</artifactId>
+            <version>[1.6,)</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.bm</groupId>
+            <artifactId>ejb3unit</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -627,12 +662,6 @@
             <classifier>jdk15</classifier>
         </dependency>
     </dependencies>
-
-    <modules>
-        <module>intellidocs-ejb</module>
-        <module>intellidocs-war</module>
-        <module>intellidocs-ear</module>
-    </modules>
 
     <build>
         <plugins>
@@ -645,7 +674,31 @@
                 </configuration>
             </plugin>
         </plugins>
+
+
     </build>
+
+    <modules>
+        <module>intellidocs-ejb</module>
+        <module>intellidocs-war</module>
+        <module>intellidocs-ear</module>
+    </modules>
+
+    <profiles>
+        <!-- Profile which runs Integration tests-->
+        <profile>
+            <id>intellidocs-test</id>
+            <activation>
+                <property>
+                    <name>enableCiProfile</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <modules>
+                <module>intellidocs-tests</module>
+            </modules>
+        </profile>
+    </profiles>
 
 </project>
 
