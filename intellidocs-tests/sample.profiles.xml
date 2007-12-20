@@ -1,0 +1,26 @@
+<profilesXml>
+    <!-- =================================================================== -->
+    <!-- CAUTION: DO NOT CHANGE THIS FILE -->
+    <!-- This file exists in the repository as REFERENCE -->
+
+    <!-- Copy this file in the same folder and RENAME it to profiles.xml -->
+    <!-- User specific Project properties are stored -->
+    <!-- EX: Location of JBOSS installation, datasource location etc., -->
+    <!-- NOTE: If this file changes, then make the appropriate change in your local copy -->
+
+    <!-- CAUTION: DO NOT CHANGE THIS FILE -->
+    <!-- This file exists in the repository as REFERENCE -->
+    <!-- =================================================================== -->
+    <profiles>
+        <profile>
+            <id>muthu</id>
+            <properties>
+                <jboss.home>/opt/share/jboss-4.2.2.GA</jboss.home>
+                <!--<installDir>/opt/tools/javaee/maven-cargo-plugin-installs</installDir>-->
+            </properties>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>muthu</activeProfile>
+    </activeProfiles>
+</profilesXml>
