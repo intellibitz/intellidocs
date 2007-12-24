@@ -9,9 +9,7 @@
         </attribute>
         <attribute name="Configuration">
             <handlers>
-                <handler subsystem="AOP">
-                    org.jboss.aspects.remoting.AOPRemotingInvocationHandler
-                </handler>
+                <handler subsystem="AOP">org.jboss.aspects.remoting.AOPRemotingInvocationHandler</handler>
             </handlers>
         </attribute>
     </mbean>
