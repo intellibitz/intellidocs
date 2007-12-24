@@ -18,6 +18,7 @@
     <url>http://localhost:8080/intellidocs</url>
 
     <dependencies>
+
         <dependency>
             <groupId>com.ibt.intellidocs</groupId>
             <artifactId>intellidocs-ejb</artifactId>
@@ -27,6 +28,11 @@
         <dependency>
             <groupId>org.jboss.seam</groupId>
             <artifactId>jboss-seam</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.seam</groupId>
+            <artifactId>jboss-el</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -65,6 +71,120 @@
             <groupId>com.sun.facelets</groupId>
             <artifactId>jsf-facelets</artifactId>
         </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.embedded</groupId>
+            <artifactId>hibernate-all</artifactId>
+            <version>${jbossEmbeddedVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.embedded</groupId>
+            <artifactId>jboss-embedded-all</artifactId>
+            <version>${jbossEmbeddedVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.embedded</groupId>
+            <artifactId>thirdparty-all</artifactId>
+            <version>${jbossEmbeddedVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.embedded</groupId>
+            <artifactId>jboss-deployers</artifactId>
+            <version>${jbossEmbeddedVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>ejb-api</artifactId>
+            <version>3.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>3.0.0.GA</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>3.2.0.ga</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>3.0.0.ga</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>8.2-504.jdbc4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>1.2-b19</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -86,16 +206,18 @@
                                 <version>2.0.1.CR1</version>
                                 <scope>provided</scope>
                             </dependency>
-                            <dependency>
-                                <groupId>org.apache.geronimo.specs</groupId>
-                                <artifactId>geronimo-j2ee_1.4_spec</artifactId>
-                                <version>1.0</version>
-                                <scope>provided</scope>
-                            </dependency>
+                            <!--
+                                                        <dependency>
+                                                            <groupId>org.apache.geronimo.specs</groupId>
+                                                            <artifactId>geronimo-j2ee_1.4_spec</artifactId>
+                                                            <version>1.0</version>
+                                                            <scope>provided</scope>
+                                                        </dependency>
+                            -->
                             <dependency>
                                 <groupId>javax.faces</groupId>
                                 <artifactId>jsf-api</artifactId>
-                                <version>[1.2,)</version>
+                                <version>1.2</version>
                                 <scope>provided</scope>
                             </dependency>
                             <dependency>
@@ -107,7 +229,7 @@
                             <dependency>
                                 <groupId>javax.persistence</groupId>
                                 <artifactId>persistence-api</artifactId>
-                                <version>[1.0,)</version>
+                                <version>1.0</version>
                                 <scope>provided</scope>
                             </dependency>
 
@@ -121,7 +243,7 @@
                             <dependency>
                                 <groupId>javax.transaction</groupId>
                                 <artifactId>jta</artifactId>
-                                <version>[1.1,)</version>
+                                <version>1.1</version>
                                 <scope>provided</scope>
                             </dependency>
                             <dependency>
@@ -134,7 +256,7 @@
                             <dependency>
                                 <groupId>commons-logging</groupId>
                                 <artifactId>commons-logging</artifactId>
-                                <version>[1.1,)</version>
+                                <version>1.1</version>
                                 <scope>provided</scope>
                             </dependency>
                         </dependencies>

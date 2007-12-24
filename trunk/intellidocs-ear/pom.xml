@@ -18,6 +18,7 @@
     <url>http://localhost:8080/intellidocs</url>
 
     <dependencies>
+
         <dependency>
             <groupId>com.ibt.intellidocs</groupId>
             <artifactId>intellidocs-ejb</artifactId>
@@ -46,11 +47,32 @@
                     <artifactId>javassist</artifactId>
                     <groupId>jboss</groupId>
                 </exclusion>
+                <exclusion>
+                    <groupId>javax.el</groupId>
+                    <artifactId>el-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.seam</groupId>
+            <artifactId>jboss-el</artifactId>
+            <version>2.0.0.GA</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.el</groupId>
+                    <artifactId>el-api</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.el</groupId>
+                    <artifactId>el-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

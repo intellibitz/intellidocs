@@ -7,31 +7,49 @@ import static org.jboss.seam.ScopeType.SESSION;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-@Entity
 @Name("dummyUser")
 @Scope(SESSION)
+@Entity
 @Table(name = "DUMMYUSER")
-public class User
+public class DummyUser
         implements Serializable
 {
+
+    private long id;
     private String username;
     private String password;
     private String name;
 
-    public User(String name, String password, String username)
+    public DummyUser(String name, String password, String username)
     {
         this.name = name;
         this.password = password;
         this.username = username;
     }
 
-    public User()
+    public DummyUser()
     {
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USER_ID")
+    public long getId()
+    {
+        return id;
+    }
+
+    public void setId(long id)
+    {
+        this.id = id;
     }
 
     @NotNull
@@ -58,7 +76,6 @@ public class User
         this.password = password;
     }
 
-    @Id
     @Length(min = 5, max = 15)
     @Pattern(regex = "^\\w*$", message = "not a valid username")
     public String getUsername()
@@ -74,6 +91,6 @@ public class User
     @Override
     public String toString()
     {
-        return "User(" + username + ")";
+        return "DummyUser(" + username + ")";
     }
 }

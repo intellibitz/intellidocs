@@ -6,23 +6,19 @@
              http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
              version="1.0">
 
-    <persistence-unit name="intellidocs">
+    <persistence-unit name="${persistence.unit_name}">
 
-        <!-- The provider only needs to be set if you use several JPA providers
-        -->
+        <!-- The provider only needs to be set if you use several JPA providers -->
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <!-- This is required to be spec compliant, Hibernate however supports
-            auto-detection even in JSE.
-       <class>hello.Message</class>
-       -->
 
-        <jta-data-source>java:/intellidocsDS</jta-data-source>
+        <jta-data-source>java:/${persistence.jta_data_source}</jta-data-source>
         <properties>
             <property name="hibernate.dialect"
-                      value="org.hibernate.dialect.PostgreSQLDialect"/>
+                      value="${hibernate.dialect}"/>
 
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto"
+                      value="${hibernate.hbm2ddl.auto}"/>
+
             <!-- These are the default for JBoss EJB3, but not for HEM: -->
             <property name="hibernate.cache.provider_class"
                       value="org.hibernate.cache.HashtableCacheProvider"/>
@@ -34,28 +30,12 @@
                       value="class, hbm"/>
 
             <!-- SQL stdout logging -->
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
-            <property name="use_sql_comments" value="true"/>
-
-
-            <!--
-            <property name="hibernate.connection.url"
-                      value="jdbc:postgresql://localhost:5432/test"/>
-            <property name="hibernate.connection.driver_class"
-                      value="org.postgresql.Driver"/>
-            <property name="hibernate.connection.password" value="test"/>
-            <property name="hibernate.connection.username" value="test"/>
-                       <property name="hibernate.c3p0.min_size" value="5"/>
-                       <property name="hibernate.c3p0.max_size" value="20"/>
-                       <property name="hibernate.c3p0.timeout"  value="300"/>
-                       <property name="hibernate.c3p0.max_statements" value="50"/>
-                       <property name="hibernate.c3p0.idle_test_period" value="3000"/>
-            <property name="hibernate.cache.provider_class"
-                      value="org.hibernate.cache.NoCacheProvider"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-            -->
-
+            <property name="hibernate.show_sql"
+                      value="${hibernate.show_sql}"/>
+            <property name="hibernate.format_sql"
+                      value="${hibernate.format_sql}"/>
+            <property name="use_sql_comments"
+                      value="${hibernate.use_sql_comments}"/>
 
         </properties>
     </persistence-unit>

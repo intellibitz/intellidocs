@@ -7,9 +7,11 @@ import javax.ejb.Local;
  * change this template use File | Settings | File Templates.
  */
 @Local
-public interface DummySeamBean
+public interface IDummyUserLocal
 {
-    public void register();
+    public DummyUser findDummyUser(long id);
+
+    public long register();
 
     public void invalid();
 
@@ -25,4 +27,7 @@ public interface DummySeamBean
 
     public void cancel();
 
+    public DummyUser getDummyUser();
+
+    public void setDummyUser(DummyUser dummyUser);
 }
