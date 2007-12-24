@@ -14,9 +14,9 @@
     <inceptionYear>2007</inceptionYear>
 
     <properties>
-        <seamVersion>2.0.1.CR1</seamVersion>
-        <richfacesVersion>[3.1,)</richfacesVersion>
-        <faceletsVersion>[1.1,)</faceletsVersion>
+        <seamVersion>2.0.0.GA</seamVersion>
+        <richfacesVersion>3.1.2.SP1</richfacesVersion>
+        <faceletsVersion>1.1.14</faceletsVersion>
         <digesterVersion>1.8</digesterVersion>
         <jbossEmbeddedVersion>beta2</jbossEmbeddedVersion>
     </properties>
@@ -106,16 +106,17 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.seam</groupId>
+                <artifactId>jboss-el</artifactId>
+                <version>${seamVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.seam</groupId>
                 <artifactId>jboss-seam</artifactId>
                 <version>${seamVersion}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>dom4j</groupId>
                         <artifactId>dom4j</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>el-api</artifactId>
-                        <groupId>javax.el</groupId>
                     </exclusion>
                     <exclusion>
                         <artifactId>javassist</artifactId>
@@ -157,10 +158,6 @@
                         <groupId>dom4j</groupId>
                     </exclusion>
                     <exclusion>
-                        <artifactId>el-api</artifactId>
-                        <groupId>javax.el</groupId>
-                    </exclusion>
-                    <exclusion>
                         <artifactId>javassist</artifactId>
                         <groupId>jboss</groupId>
                     </exclusion>
@@ -198,10 +195,6 @@
                     <exclusion>
                         <artifactId>dom4j</artifactId>
                         <groupId>dom4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>el-api</artifactId>
-                        <groupId>javax.el</groupId>
                     </exclusion>
                     <exclusion>
                         <artifactId>javassist</artifactId>
@@ -243,10 +236,6 @@
                         <groupId>dom4j</groupId>
                     </exclusion>
                     <exclusion>
-                        <artifactId>el-api</artifactId>
-                        <groupId>javax.el</groupId>
-                    </exclusion>
-                    <exclusion>
                         <artifactId>javassist</artifactId>
                         <groupId>jboss</groupId>
                     </exclusion>
@@ -286,10 +275,6 @@
                         <groupId>dom4j</groupId>
                     </exclusion>
                     <exclusion>
-                        <artifactId>el-api</artifactId>
-                        <groupId>javax.el</groupId>
-                    </exclusion>
-                    <exclusion>
                         <artifactId>javassist</artifactId>
                         <groupId>jboss</groupId>
                     </exclusion>
@@ -327,10 +312,6 @@
                     <exclusion>
                         <artifactId>dom4j</artifactId>
                         <groupId>dom4j</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>el-api</artifactId>
-                        <groupId>javax.el</groupId>
                     </exclusion>
                     <exclusion>
                         <artifactId>javassist</artifactId>
@@ -479,6 +460,10 @@
                         <artifactId>commons-logging</artifactId>
                         <groupId>commons-logging</groupId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>javax.el</groupId>
+                        <artifactId>el-api</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -490,174 +475,36 @@
     </dependencyManagement>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.jboss.seam</groupId>
-            <artifactId>jboss-seam</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.ejb</groupId>
-            <artifactId>ejb-api</artifactId>
-            <version>3.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>[1.0,)</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate</artifactId>
-            <version>3.2.5.ga</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>3.0.0.GA</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>3.2.0.ga</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-commons-annotations</artifactId>
-            <version>3.0.0.ga</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>3.3.2.Beta1</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>[1.1,)</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>[2.5,)</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>[2.0,)</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>[1.1,)</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>el-api</artifactId>
-            <version>[1.0,)</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.faces</groupId>
-            <artifactId>jsf-api</artifactId>
-            <version>[1.2,)</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.faces</groupId>
-            <artifactId>jsf-impl</artifactId>
-            <version>1.2-b19</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>8.2-504.jdbc4</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.embedded</groupId>
-            <artifactId>hibernate-all</artifactId>
-            <version>${jbossEmbeddedVersion}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.embedded</groupId>
-            <artifactId>thirdparty-all</artifactId>
-            <version>${jbossEmbeddedVersion}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jboss.embedded</groupId>
-            <artifactId>jboss-embedded-all</artifactId>
-            <version>${jbossEmbeddedVersion}</version>
-            <scope>test</scope>
-        </dependency>
-
-
+        <!--
+                <dependency>
+                    <groupId>dbunit</groupId>
+                    <artifactId>dbunit</artifactId>
+                    <version>2.1</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>htmlunit</groupId>
+                    <artifactId>htmlunit</artifactId>
+                    <version>1.13</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.bm</groupId>
+                    <artifactId>ejb3unit</artifactId>
+                    <version>1.1.1</version>
+                    <scope>test</scope>
+                </dependency>
+        -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>[4.0,)</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>dbunit</groupId>
-            <artifactId>dbunit</artifactId>
-            <version>[2.1,)</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-            <version>1.13</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>httpunit</groupId>
-            <artifactId>httpunit</artifactId>
-            <version>[1.6,)</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.bm</groupId>
-            <artifactId>ejb3unit</artifactId>
-            <version>1.1.1</version>
+            <version>4.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>4.7</version>
+            <version>5.1</version>
             <scope>test</scope>
             <classifier>jdk15</classifier>
         </dependency>
@@ -671,6 +518,25 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>java.protocol.handler.pkgs</name>
+                            <value>org.jboss.virtual.protocol</value>
+                        </property>
+                    </systemProperties>
+                    <forkMode>once</forkMode>
+                    <argLine>-Dsun.lang.ClassLoader.allowArraySyntax=true
+                    </argLine>
+                    <useSystemClassLoader>true</useSystemClassLoader>
+                    <trimStackTrace>false</trimStackTrace>
+                    <childDelegation>true</childDelegation>
+                    <!--<disableXmlReport>true</disableXmlReport>-->
                 </configuration>
             </plugin>
         </plugins>

@@ -22,14 +22,14 @@ import java.util.List;
 @Stateful
 @Scope(EVENT)
 @Name("dummySeamBean")
-public class DummySeamBeanAction
-        implements DummySeamBean, Serializable
+public class DummyUserAction
+        implements IDummyUserLocal, Serializable
 {
     @Logger
     Log log;
 
     @In
-    private User dummyUser;
+    private DummyUser dummyUser;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -37,14 +37,19 @@ public class DummySeamBeanAction
     private String verify;
     private boolean registered;
 
-    public void register()
+    public DummyUser findDummyUser(long id)
+    {
+        return entityManager.find(DummyUser.class, id);
+    }
+
+    public long register()
     {
         if (dummyUser.getPassword().equals(verify))
         {
             // List existing = entityManager.createQuery("select u.username from User u where u.username=:username")
             //   .setParameter("username", dummyUser.getUsername())
             List existing = entityManager.createQuery
-                    ("select u.username from User u where u.username=#{user.username}")
+                    ("select u.username from DummyUser u where u.username=#{user.username}")
                     .getResultList();
             if (existing.size() == 0)
             {
@@ -63,6 +68,7 @@ public class DummySeamBeanAction
             log.info("Re-enter your password");
             verify = null;
         }
+        return dummyUser.getId();
     }
 
     public void invalid()
@@ -102,5 +108,13 @@ public class DummySeamBeanAction
         log.info("dummySeamBean#destroy.. Done!");
     }
 
+    public DummyUser getDummyUser()
+    {
+        return dummyUser;
+    }
 
+    public void setDummyUser(DummyUser dummyUser)
+    {
+        this.dummyUser = dummyUser;
+    }
 }
