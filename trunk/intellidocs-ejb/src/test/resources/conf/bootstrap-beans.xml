@@ -15,8 +15,7 @@
                 </entry>
                 <entry>
                     <key>com.arjuna.ats.arjuna.common.propertiesFile</key>
-                    <value>${jboss.home.dir}/conf/jbossjta-properties.xml
-                    </value>
+                    <value>${jboss.home.dir}/conf/jbossjta-properties.xml</value>
                 </entry>
                 <entry>
                     <key>com.arjuna.ats.arjuna.objectstore.objectStoreDir</key>
@@ -184,9 +183,7 @@
         </property>
         <property name="resources">
             <list elementClass="java.lang.String">
-                <value>
-                    ${jboss.embedded.bootstrap.resource.path}conf/jboss-service.xml
-                </value>
+                <value>${jboss.embedded.bootstrap.resource.path}conf/jboss-service.xml</value>
             </list>
         </property>
     </bean>
@@ -216,9 +213,7 @@
         </property>
         <property name="directoriesByResource">
             <list elementClass="java.lang.String">
-                <value>
-                    ${jboss.embedded.bootstrap.resource.path}conf/jboss-service.xml/../deployers
-                </value>
+                <value>${jboss.embedded.bootstrap.resource.path}conf/jboss-service.xml/../deployers</value>
             </list>
         </property>
     </bean>
@@ -235,9 +230,7 @@
         </property>
         <property name="directoriesByResource">
             <list elementClass="java.lang.String">
-                <value>
-                    ${jboss.embedded.bootstrap.resource.path}conf/jboss-service.xml/../deploy
-                </value>
+                <value>${jboss.embedded.bootstrap.resource.path}conf/jboss-service.xml/../deploy</value>
             </list>
         </property>
     </bean>
