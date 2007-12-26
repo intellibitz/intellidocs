@@ -138,6 +138,7 @@
                                 <properties>
                                     <cargo.jboss.configuration>default
                                     </cargo.jboss.configuration>
+                                    <cargo.rmi.port>1099</cargo.rmi.port>
                                 </properties>
                             </configuration>
                             <!-- Deployer configuration -->

@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Name("dummyUser")
+//@JndiName("DummyUser/local")
 @Scope(SESSION)
 @Entity
 @Table(name = "DUMMYUSER")

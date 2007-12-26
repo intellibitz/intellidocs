@@ -14,10 +14,8 @@
         <jta-data-source>java:/${test.persistence.jta_data_source}
         </jta-data-source>
         <properties>
-            <!--
-                        <property name="hibernate.dialect"
-                                  value="${test.hibernate.dialect}"/>
-            -->
+            <property name="hibernate.dialect"
+                      value="${test.hibernate.dialect}"/>
 
             <property name="hibernate.hbm2ddl.auto"
                       value="${test.hibernate.hbm2ddl.auto}"/>

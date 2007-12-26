@@ -2,6 +2,7 @@ package com.ibt.intellidocs.dummy;
 
 import org.jboss.deployers.spi.DeploymentException;
 import org.jboss.embedded.Bootstrap;
+import org.jboss.seam.mock.SeamTest;
 import org.jboss.virtual.plugins.context.vfs.AssembledContextFactory;
 import org.jboss.virtual.plugins.context.vfs.AssembledDirectory;
 import org.testng.annotations.AfterSuite;
@@ -24,10 +25,17 @@ import junit.extensions.TestSetup;
  * DummyUserTest Unit test for the DummyUser Entity
  */
 public class DummyUserTest
-//    extends TestCase
+        extends SeamTest
 {
 
     public DummyUserTest()
+    {
+        super();
+    }
+
+    @Override
+    protected void startJbossEmbeddedIfNecessary()
+            throws Exception
     {
     }
 
@@ -43,15 +51,39 @@ public class DummyUserTest
         jar.addClass(DummyUser.class);
         jar.addClass(IDummyUserLocal.class);
         jar.addClass(DummyUserAction.class);
-        jar.mkdir("META-INF").addResource("META-INF/persistence.xml");
+        AssembledDirectory assembledDirectory = jar.mkdir("META-INF");
+        assembledDirectory.addResource("META-INF/persistence.xml");
+        assembledDirectory.addResource("META-INF/components.xml");
         try
         {
-            Bootstrap.getInstance().deploy(jar);
+            Bootstrap bootstrap = Bootstrap.getInstance();
+/*
+            if (resourceExists("seam.properties")) {
+                bootstrap.deployResourceBases("seam.properties");
+            }
+*/
+            if (resourceExists("META-INF/components.xml"))
+            {
+                bootstrap.deployResourceBases("META-INF/components.xml");
+            }
+/*
+            if (resourceExists("META-INF/seam.properties")) {
+                bootstrap.deployResourceBases("META-INF/seam.properties");
+            }
+*/
+            bootstrap.deploy(jar);
         }
         catch (DeploymentException e)
         {
             throw new RuntimeException("Unable to deploy", e);
         }
+    }
+
+
+    private static boolean resourceExists(String name)
+    {
+        return Thread.currentThread().getContextClassLoader()
+                .getResource(name) != null;
     }
 
     private static void undeploy()
@@ -98,8 +130,8 @@ public class DummyUserTest
     }
 */
 
-
     //    @Override
+
     @BeforeSuite
     protected void setUp()
             throws Exception
@@ -147,36 +179,49 @@ public class DummyUserTest
     public void testEntityManager()
             throws Exception
     {
-        // This is a transactionally aware EntityManager and must be accessed within a JTA transaction
-        // Why aren't we using javax.persistence.Persistence?  Well, our persistence.xml file uses
-        // jta-datasource which means that it is created by the EJB container/embedded JBoss.
-        // using javax.persistence.Persistence will just cause us an error
-        EntityManager em = (EntityManager) new InitialContext().lookup
-                ("java:/EntityManagers/DefaultDS");
 
-        // Obtain JBoss transaction
-        TransactionManager tm = (TransactionManager) new InitialContext().lookup
-                ("java:/TransactionManager");
+        new ComponentTest()
+        {
 
-        tm.begin();
+            protected void testComponents()
+                    throws Exception
+            {
+                // This is a transactionally aware EntityManager and must be accessed within a JTA transaction
+                // Why aren't we using javax.persistence.Persistence?  Well, our persistence.xml file uses
+                // jta-datasource which means that it is created by the EJB container/embedded JBoss.
+                // using javax.persistence.Persistence will just cause us an error
+                EntityManager em = (EntityManager)
+                        new InitialContext().lookup
+                                ("java:/EntityManagers/DefaultDS");
+//                    getInstance("DefaultDS");
 
-        DummyUser dummyUser = new DummyUser();
-        dummyUser.setName("test1");
-        dummyUser.setUsername("test1");
-        dummyUser.setPassword("test1");
-        em.persist(dummyUser);
+                // Obtain JBoss transaction
+                TransactionManager tm =
+                        (TransactionManager) new InitialContext().lookup
+                                ("java:/TransactionManager");
 
-        assert (dummyUser.getId() > 0);
+                tm.begin();
 
-        tm.commit();
-        long id = dummyUser.getId();
-        log.info("created user 'test1' in DB with id: " + id);
+                DummyUser dummyUser = new DummyUser();
+                dummyUser.setName("test1");
+                dummyUser.setUsername("test1");
+                dummyUser.setPassword("test1");
+                em.persist(dummyUser);
 
-        tm.begin();
-        dummyUser = em.find(DummyUser.class, id);
-        assert (null != dummyUser);
-        tm.commit();
-        log.info("found user 'test1' in DB with id: " + id);
+                assert (dummyUser.getId() > 0);
+
+                tm.commit();
+                long id = dummyUser.getId();
+                log.info("created user 'test1' in DB with id: " + id);
+
+                tm.begin();
+                dummyUser = em.find(DummyUser.class, id);
+                assert (null != dummyUser);
+                tm.commit();
+                log.info("found user 'test1' in DB with id: " + id);
+            }
+        }.run();
+
     }
 
 }

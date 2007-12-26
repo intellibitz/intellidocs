@@ -88,6 +88,7 @@ A better solution would be for m2 to define a default integration-test lifecycle
                         <properties>
                             <cargo.jboss.configuration>default
                             </cargo.jboss.configuration>
+                            <cargo.rmi.port>1099</cargo.rmi.port>
                         </properties>
                     </configuration>
                 </configuration>
