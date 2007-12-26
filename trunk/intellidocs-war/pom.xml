@@ -187,6 +187,39 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <filters>
+            <filter>src/main/filters/filter-${install.mode}.properties</filter>
+        </filters>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.0.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>war</goal>
+                        </goals>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <filtering>true</filtering>
+                                    <directory>${basedir}/src/main/config
+                                    </directory>
+                                    <targetPath>WEB-INF</targetPath>
+                                    <includes>
+                                        <include>components.xml</include>
+                                    </includes>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <profiles>
         <!-- Profile which runs jetty -->
         <profile>

@@ -21,14 +21,16 @@ import java.util.List;
  */
 @Stateful
 @Scope(EVENT)
-@Name("dummySeamBean")
+@Name("dummyUserAction")
+//@JndiName ("DummyUserAction/local")
 public class DummyUserAction
         implements IDummyUserLocal, Serializable
 {
     @Logger
+    @In(create = true, required = true)
     Log log;
 
-    @In
+    @In(required = true)
     private DummyUser dummyUser;
 
     @PersistenceContext
@@ -46,10 +48,13 @@ public class DummyUserAction
     {
         if (dummyUser.getPassword().equals(verify))
         {
-            // List existing = entityManager.createQuery("select u.username from User u where u.username=:username")
-            //   .setParameter("username", dummyUser.getUsername())
+/*
+             List existing = entityManager.createQuery
+                     ("select u.username from DummyUser u where u.username=:username")
+               .setParameter("username", dummyUser.getUsername())
+*/
             List existing = entityManager.createQuery
-                    ("select u.username from DummyUser u where u.username=#{user.username}")
+                    ("select u.username from DummyUser u where u.username=#{dummyUser.username}")
                     .getResultList();
             if (existing.size() == 0)
             {

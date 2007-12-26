@@ -13,13 +13,18 @@
     <description>IntelliDesk - No more messy Desks!</description>
     <inceptionYear>2007</inceptionYear>
 
-    <properties>
-        <seamVersion>2.0.0.GA</seamVersion>
-        <richfacesVersion>3.1.2.SP1</richfacesVersion>
-        <faceletsVersion>1.1.14</faceletsVersion>
-        <digesterVersion>1.8</digesterVersion>
-        <jbossEmbeddedVersion>beta2</jbossEmbeddedVersion>
-    </properties>
+    <scm>
+        <connection>scm:svn:http://intellidocs.googlecode.com/svn/trunk/
+        </connection>
+        <developerConnection>
+            scm:svn:https://intellidocs.googlecode.com/svn/trunk/
+        </developerConnection>
+        <url>http://intellidocs.googlecode.com/svn/trunk/</url>
+    </scm>
+
+    <prerequisites>
+        <maven>2.0.8</maven>
+    </prerequisites>
 
     <developers>
         <developer>
@@ -89,6 +94,15 @@
             </releases>
         </pluginRepository>
     </pluginRepositories>
+
+    <properties>
+        <seamVersion>2.0.0.GA</seamVersion>
+        <richfacesVersion>3.1.2.SP1</richfacesVersion>
+        <faceletsVersion>1.1.14</faceletsVersion>
+        <digesterVersion>1.8</digesterVersion>
+        <jbossEmbeddedVersion>beta2</jbossEmbeddedVersion>
+        <install.mode>dev</install.mode>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -563,6 +577,27 @@
             <modules>
                 <module>intellidocs-tests</module>
             </modules>
+        </profile>
+        <!-- Target profiles for installation and deployment-->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <install.mode>dev</install.mode>
+            </properties>
+        </profile>
+        <!-- Target profiles for installation and deployment-->
+        <profile>
+            <id>test</id>
+            <properties>
+                <install.mode>test</install.mode>
+            </properties>
+        </profile>
+        <!-- Target profiles for installation and deployment-->
+        <profile>
+            <id>prod</id>
+            <properties>
+                <install.mode>prod</install.mode>
+            </properties>
         </profile>
     </profiles>
 
