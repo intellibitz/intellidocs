@@ -27,7 +27,6 @@ public class DummyUserAction
         implements IDummyUserLocal, Serializable
 {
     @Logger
-    @In(create = true, required = true)
     Log log;
 
     @In(required = true)

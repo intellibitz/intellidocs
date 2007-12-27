@@ -93,7 +93,7 @@
                         <div class="input">
                             <s:decorate>
                                 <h:inputSecret id="verify"
-                                               value="#{dummySeamBean.verify}"
+                                               value="#{dummyUserAction.verify}"
                                                required="true"/>
                             </s:decorate>
                         </div>
@@ -108,8 +108,8 @@
                 <div class="entry">
                     <div class="label">&#160;</div>
                     <div class="input">
-                        <h:commandButton id="dummySeamBean" value="Register"
-                                         action="#{dummySeamBean.register}"/>&#160;
+                        <h:commandButton id="dummyUserAction" value="Register"
+                                         action="#{dummyUserAction.register}"/>&#160;
                         <s:button id="cancel" value="Cancel"
                                   view="/home.xhtml"/>
                     </div>
