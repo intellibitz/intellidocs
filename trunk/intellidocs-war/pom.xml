@@ -190,7 +190,21 @@
     <build>
         <filters>
             <filter>src/main/filters/filter-${install.mode}.properties</filter>
+            <filter>src/test/filters/filter-${install.mode}.properties</filter>
         </filters>
+        <testResources>
+            <testResource>
+                <directory>src/test/config</directory>
+                <filtering>true</filtering>
+                <targetPath>WEB-INF</targetPath>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
