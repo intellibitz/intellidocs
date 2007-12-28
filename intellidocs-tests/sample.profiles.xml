@@ -15,8 +15,7 @@
         <profile>
             <id>muthu</id>
             <properties>
-                <jboss.home>/opt/share/jboss-4.2.2.GA</jboss.home>
-                <!--<installDir>/opt/tools/javaee/maven-cargo-plugin-installs</installDir>-->
+                <jboss.home>/opt/share/jboss-5.0.0.Beta3</jboss.home>
             </properties>
         </profile>
     </profiles>

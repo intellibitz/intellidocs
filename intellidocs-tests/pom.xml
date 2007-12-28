@@ -79,6 +79,12 @@ A better solution would be for m2 to define a default integration-test lifecycle
                     <container>
                         <containerId>jboss4x</containerId>
                         <home>${jboss.home}</home>
+                        <!--
+                                                <zipUrlInstaller>
+                                                    <url>http://downloads.sourceforge.net/jboss/jboss-4.2.2.GA.zip</url>
+                                                    <installDir>${parent.basedir}</installDir>
+                                                </zipUrlInstaller>
+                        -->
                         <log>${project.build.directory}/cargo.log</log>
                     </container>
                     <!-- Configuration to use with the container -->
@@ -88,7 +94,11 @@ A better solution would be for m2 to define a default integration-test lifecycle
                         <properties>
                             <cargo.jboss.configuration>default
                             </cargo.jboss.configuration>
+                            <!--<cargo.servlet.port>9080</cargo.servlet.port>-->
                             <cargo.rmi.port>1099</cargo.rmi.port>
+                            <cargo.jvmargs>
+                                -Dsun.lang.ClassLoader.allowArraySyntax=true
+                            </cargo.jvmargs>
                         </properties>
                     </configuration>
                 </configuration>
@@ -118,6 +128,7 @@ A better solution would be for m2 to define a default integration-test lifecycle
                         <id>stop-container</id>
                         <phase>post-integration-test</phase>
                         <goals>
+                            <goal>undeploy</goal>
                             <goal>stop</goal>
                         </goals>
                     </execution>

@@ -123,9 +123,8 @@
 
     <build>
         <filters>
-            <!--<filter>src/main/filters/filter.properties</filter>-->
             <filter>src/main/filters/filter-${install.mode}.properties</filter>
-            <filter>src/test/filters/filter.properties</filter>
+            <filter>src/test/filters/filter-${install.mode}.properties</filter>
         </filters>
         <resources>
             <resource>
