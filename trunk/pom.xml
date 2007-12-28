@@ -52,7 +52,7 @@
             </roles>
             <timezone>-5.5</timezone>
             <properties>
-                GMail Talk: muthu.ramadoss
+                <property>muthu.ramadoss@gmail.com</property>
             </properties>
         </developer>
     </developers>
