@@ -13,6 +13,23 @@
     <description>IntelliDesk - No more messy Desks!</description>
     <inceptionYear>2007</inceptionYear>
 
+    <prerequisites>
+        <maven>2.0.8</maven>
+    </prerequisites>
+
+    <ciManagement>
+        <url>http://ns1:8082/continuum</url>
+        <system>continuum</system>
+        <notifiers>
+            <notifier>
+                <type>mail</type>
+                <configuration>
+                    <address>muthu@intellibitz.com</address>
+                </configuration>
+            </notifier>
+        </notifiers>
+    </ciManagement>
+
     <scm>
         <connection>scm:svn:http://intellidocs.googlecode.com/svn/trunk/
         </connection>
@@ -22,20 +39,21 @@
         <url>http://intellidocs.googlecode.com/svn/trunk/</url>
     </scm>
 
-    <prerequisites>
-        <maven>2.0.8</maven>
-    </prerequisites>
-
     <developers>
         <developer>
             <name>Muthu Ramadoss</name>
             <id>mramadoss</id>
             <email>muthu@intellibitz.com</email>
             <organization>IntelliBitz Technologies</organization>
+            <organizationUrl>http://www.intellibitz.com</organizationUrl>
+            <url>http://groups.google.com/group/intellidocs</url>
             <roles>
                 <role>Project Owner</role>
             </roles>
             <timezone>-5.5</timezone>
+            <properties>
+                GMail Talk: muthu.ramadoss
+            </properties>
         </developer>
     </developers>
 
