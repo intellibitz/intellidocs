@@ -44,18 +44,6 @@
             <artifactId>jboss-seam-ui</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.jboss.seam</groupId>
-            <artifactId>jboss-seam-pdf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.seam</groupId>
-            <artifactId>jboss-seam-remoting</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.seam</groupId>
-            <artifactId>jboss-seam-ioc</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.richfaces.framework</groupId>
             <artifactId>richfaces-api</artifactId>
         </dependency>
@@ -253,14 +241,6 @@
                                 <version>2.0.1.CR1</version>
                                 <scope>provided</scope>
                             </dependency>
-                            <!--
-                                                        <dependency>
-                                                            <groupId>org.apache.geronimo.specs</groupId>
-                                                            <artifactId>geronimo-j2ee_1.4_spec</artifactId>
-                                                            <version>1.0</version>
-                                                            <scope>provided</scope>
-                                                        </dependency>
-                            -->
                             <dependency>
                                 <groupId>javax.faces</groupId>
                                 <artifactId>jsf-api</artifactId>
@@ -279,8 +259,6 @@
                                 <version>1.0</version>
                                 <scope>provided</scope>
                             </dependency>
-
-
                             <dependency>
                                 <groupId>org.jboss.embedded</groupId>
                                 <artifactId>jboss-embedded-all</artifactId>
@@ -299,7 +277,6 @@
                                 <version>beta2</version>
                                 <scope>provided</scope>
                             </dependency>
-
                             <dependency>
                                 <groupId>commons-logging</groupId>
                                 <artifactId>commons-logging</artifactId>
